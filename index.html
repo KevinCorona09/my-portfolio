@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Corona - Portafolio</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Particles Background Container -->
+    <div id="particles-js"></div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <span class="brand-text">Kevin Corona</span>
+            </a>
+            
+            <div class="d-flex align-items-center order-lg-3">
+                <div class="language-toggle me-3">
+                    <button class="btn btn-outline-primary btn-sm" id="langToggle">
+                        <span id="langText">EN</span>
+                    </button>
+                </div>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home" data-es="Inicio" data-en="Home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" data-es="Acerca" data-en="About">Acerca</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills" data-es="Habilidades" data-en="Skills">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education" data-es="Educación" data-en="Education">Acerca</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience" data-es="Experiencia" data-en="Experience">Experiencia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background"></div>
+        <div class="bg-pattern"></div>
+        
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="greeting" data-es="¡Bienvenido/a a mi Portafolio!" data-en="Welcome to my Portfolio!">¡Hola! Soy</span>
+                            <span class="name">Kevin Corona</span>
+                            <span class="title" data-es="Desarrollador Full-Stack" data-en="Full-Stack Developer">Desarrollador de Aplicaciones</span>
+                        </h1>
+                        
+                        <p class="hero-description" data-es="Estudiante apasionado de ciencias de la computación especializado en desarrollo de aplicaciones y optimización de sistemas. Actualmente cursando BUT Informatique en IUT Nice-Côte d'Azur." data-en="Passionate computer science student specialized in application development and system optimization. Currently studying BUT Informatique at IUT Nice-Côte d'Azur.">
+                            Estudiante apasionado de ciencias de la computación especializado en desarrollo de aplicaciones y optimización de sistemas. Actualmente cursando BUT Informatique en IUT Nice-Côte d'Azur.
+                        </p>
+                        
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-primary" data-es="Ver Proyectos" data-en="View Projects">Ver Proyectos</a>
+                            <a href="#contact" class="btn btn-outline-light" data-es="Contactar" data-en="Contact">Contactar</a>
+                        </div>
+                        
+                        <div class="social-links">
+                            <div class="footer-social">
+                                <a href="https://github.com/KevinCorona09" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/kevin-yeudiel-gómez-corona-3322932bb" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://instagram.com/kevin._yeu" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="mailto:kevin.corona090@gmail.com" class="social-link">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="hero-image">
+                        <div class="image-container">
+                            <div class="image-border"></div>
+                            <img src="./assets/images/profile.jpg" alt="Kevin Corona" class="profile-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-es="Conóceme !" data-en="About Me">Acerca de Mí</h2>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="about-content">
+                        <h3 data-es="¡Hola! Soy Kevin Corona" data-en="Hello! I'm Kevin Corona">¡Hola! Soy Kevin Corona</h3>
+                        
+                        <p data-es="Estudiante internacional mexicano de 20 años con visa de larga estancia válida como permiso de residencia (VLS-TS). Dinámico, creativo, eficiente y de aprendizaje rápido. Me encanta el trabajo bien hecho y esto me motiva a seguir cultivando mi conocimiento y habilidades en el campo de la informática. Apasionado de la natación, la danza, el baloncesto y aprender nuevos idiomas." data-en="20-year-old mexican international student with a long-stay visa valid as a residence permit (VLS-TS). Dynamic, creative, efficient, and fast learner. I love well-done work and this motivates me to continue cultivating my knowledge and skills in the field of computer science. Passionate about swimming, dancing, basketball and learning new languages.">
+                            Estudiante internacional mexicano de 20 años con visa de larga estancia válida como permiso de residencia (VLS-TS). Dinámico, creativo, eficiente y de aprendizaje rápido. Me encanta el trabajo bien hecho y esto me motiva a seguir cultivando mi conocimiento y habilidades en el campo de la informática. Apasionado de la natación, la danza y el baloncesto.
+                        </p>
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">6+</span>
+                                <span class="stat-label" data-es="Proyectos" data-en="Projects">Proyectos</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2+</span>
+                                <span class="stat-label" data-es="Años Experiencia" data-en="Years Experience">Años Experiencia</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">10+</span>
+                                <span class="stat-label" data-es="Tecnologías" data-en="Technologies">Tecnologías</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">7+</span>
+                                <span class="stat-label" data-es="Lenguajes de programación" data-en="Programming Languages">Tecnologías</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">3+</span>
+                                <span class="stat-label" data-es="Idiomas" data-en="Spoken Languages">Tecnologías</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="about-image">
+                        <div class="image-grid">
+                            <div class="grid-item">
+                                <i class="fas fa-code"></i>
+                                <span data-es=" Desarrollo de Software" data-en=" Sofware Development">Desarrollo</span>
+                            </div>
+                            <div class="grid-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span data-es=" Apps Móviles" data-en=" Mobile Apps">Móvil</span>
+                            </div>
+                            <div class="grid-item">
+                                <i class="fas fa-database"></i>
+                                <span data-es=" Gestión de Bases de Datos" data-en=" Database Management">Base de Datos</span>
+                            </div>
+                            <div class="grid-item">
+                                <i class="fas fa-server"></i>
+                                <span data-es=" Optimización de Sistemas" data-en=" System Optimization">Sistemas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title" data-es="Habilidades" data-en="Skills">Habilidades</h2>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 data-es="Lenguajes de Programación" data-en="Programming Languages">Lenguajes de Programación</h4>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Java</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>JavaScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>HTML/CSS</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Phyton</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>C/C++</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="60%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>SQL</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="75%"></div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h4 data-es="Tecnologías y Herramientas" data-en="Technologies & Tools">Tecnologías y Herramientas</h4>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>JUnit</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Java NIO</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Git/GitHub</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Arduino/IoT</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Android Studio</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title" data-es="Proyectos" data-en="Projects">Proyectos</h2>
+            
+            <div class="row">
+                <!-- Project 1 - Compressor (con descarga PDF) -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="./assets/images/compressor-preview.jpg" alt="Compressor Web App" class="project-preview-img">
+                            <div class="project-overlay download-pdf-overlay" data-pdf="./assets/documents/compressor-presentation.pdf">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 data-es="Aplicación Web de Compresión" data-en="Web Compression App">Aplicación Web de Compresión</h4>
+                            <p data-es="Aplicación web completa que implementa el algoritmo de compresión de Huffman para reducir el tamaño de páginas web. Desarrollado en equipo durante el semestre 2 del BUT, permite la descarga y análisis detallado de compresión con arquitectura modular." data-en="Complete web application that implements the Huffman compression algorithm to reduce web page size. Developed as a team during BUT semester 2, allows download and detailed compression analysis with modular architecture.">
+                                Aplicación web completa que implementa el algoritmo de compresión de Huffman para reducir el tamaño de páginas web. Desarrollado en equipo durante el semestre 2 del BUT, permite la descarga y análisis detallado de compresión con arquitectura modular.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">API NIO</span>
+                                <span class="tech-tag">Streams Java</span>
+                                <span class="tech-tag">Complex Algorithms (Huffman)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 - Dental (con video) -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image" style="position: relative;">
+                            <img src="./assets/images/dental-preview.jpg" alt="Dental Server Support" class="project-preview-img">
+                            <div class="play-button-overlay" data-video="./assets/videos/dental-demo.mp4" aria-label="Reproducir video">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 data-es="Sistema Dental Server Support" data-en="Dental Server Support System">Sistema Dental Server Support</h4>
+                            <p data-es="Sistema integralmente desarrollado en Java durante mi estancia en DCM para gestión y limpieza automatizada de archivos dentro de un servidor dental. Maneja entre 40,000-120,000 archivos mensuales, cuenta con una interfaz gráfica simple de utilizar, monitoreo en tiempo real y arquitectura multi-threading." data-en="System integrally developed in Java during my time at DCM for automated file management and cleanup within a dental server. It handles between 40,000-120,000 files per month, has a simple to use graphical interface, real-time monitoring and multi-threading architecture.">
+                                Sistema integral desarrollado durante mi alternancia en DCM para gestión y limpieza automatizada de archivos de servidor dental. Maneja entre 40,000-120,000 archivos mensuales con interfaz gráfica avanzada, monitoreo en tiempo real y arquitectura multi-threading.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">JavaFX</span>
+                                <span class="tech-tag">Java NIO</span>
+                                <span class="tech-tag">Java Concurrency</span>
+                                <span class="tech-tag">MVC Architecture</span>
+                                <span class="tech-tag">Multi-Threading</span>
+                                <span class="tech-tag">Automated File Management</span>
+                                <span class="tech-tag">Config File</span>
+                                <span class="tech-tag">Recursive Research</span>
+                                <span class="tech-tag">Sprint Dev Method</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 - Sonova (con video) -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image" style="position: relative;">
+                            <img src="./assets/images/sonova-preview.jpg" alt="Sonova Music App" class="project-preview-img">
+                            <div class="play-button-overlay" data-video="./assets/videos/sonova-demo.mp4" aria-label="Reproducir video">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 data-es="Aplicación Android Sonova" data-en="Sonova Android App">Aplicación Android Sonova</h4>
+                            <p data-es="Aplicación Android moderna para descubrimiento musical con diseño neón único. Incorpora arquitectura Material Design, búsqueda avanzada con filtros, sistema de favoritos persistente y soporte multiidioma completo." data-en="Modern Android application for music discovery with unique neon design. Incorporates Material Design architecture, advanced search with filters, persistent favorites system, and complete multilingual support.">
+                                Aplicación Android moderna para descubrimiento musical con diseño neón único. Incorpora arquitectura Material Design, búsqueda avanzada con filtros, sistema de favoritos persistente y soporte multiidioma completo.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Android Studio</span>
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">Material Design</span>
+                                <span class="tech-tag">Parcelable</span>
+                                <span class="tech-tag">Media Player</span>
+                                <span class="tech-tag">Android SDK</span>
+                                <span class="tech-tag">Shared Preferences</span>
+                                <span class="tech-tag">Picasso</span>
+                                <span class="tech-tag">UX/UI </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 - Smart Home (solo imagen, sin video) -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="./assets/images/smart-home-preview.jpg" alt="Smart Home System" class="project-preview-img">
+                            <div class="project-overlay">
+                                <i class="fas fa-home"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 data-es="Sistema Domótico Inteligente" data-en="Smart Home System">Sistema Domótico Inteligente</h4>
+                            <p data-es="Proyecto de automatización doméstica usando Arduino y Python para control inteligente de iluminación, puertas y ventanas. Sistema desarrollado en la Academia de Robótica Aplicada con regulación automática basada en sensores ambientales." data-en="Home automation project using Arduino and Python for intelligent lighting, doors and windows control. System developed at the Applied Robotics Academy with automatic regulation based on environmental sensors.">
+                                Proyecto de automatización doméstica usando Arduino y Python para control inteligente de iluminación. Sistema desarrollado en la Academia de Robótica Aplicada con regulación automática basada en sensores ambientales.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Arduino</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PySerial</span>
+                                <span class="tech-tag">IoT</span>
+                                <span class="tech-tag">Sensors</span>
+                                <span class="tech-tag">Innovation</span>
+                                <span class="tech-tag">Autonomy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 - Aeroponic (con video) -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image" style="position: relative;">
+                            <img src="./assets/images/aeroponic-preview.jpg" alt="Aeroponic System" class="project-preview-img">
+                            <div class="play-button-overlay" data-video="./assets/videos/aeroponic-demo.mp4" aria-label="Reproducir video">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 data-es="Sistema de Cultivo Aeropónico" data-en="Aeroponic Cultivation System">Sistema de Cultivo Aeropónico</h4>
+                            <p data-es="Aplicación móvil Bluetooth desarrollada en MIT App Inventor para monitoreo de sistema de cultivo aeropónico. Proyecto en equipo del Lycée Franco-Mexicain con seguimiento en tiempo real de condiciones ambientales." data-en="Bluetooth mobile application developed in MIT App Inventor for aeroponic cultivation system monitoring. Team project from Lycée Franco-Mexicain with real-time environmental conditions tracking.">
+                                Aplicación móvil Bluetooth desarrollada en MIT App Inventor para monitoreo de sistema de cultivo aeropónico. Proyecto en equipo del Lycée Franco-Mexicain con seguimiento en tiempo real de condiciones ambientales.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">MIT App Inventor</span>
+                                <span class="tech-tag">Bluetooth</span>
+                                <span class="tech-tag">Arduino</span>
+                                <span class="tech-tag">Sensors</span>
+                                <span class="tech-tag">Remote Surveillance</span>
+                                <span class="tech-tag">Teamwork</span>
+                                <span class="tech-tag">Multi disciplinary project management</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 - Card Game (con video) -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image" style="position: relative;">
+                            <img src="./assets/images/card-preview.jpg" alt="Card Game" class="project-preview-img">
+                            <div class="play-button-overlay" data-video="./assets/videos/card-demo.mp4" aria-label="Reproducir video">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 data-es="Juego de Cartas Multijugador" data-en="Multiplayer Card Game">Juego de Cartas Multijugador</h4>
+                            <p data-es="Juego de cartas desarrollado en C durante el BUT con modo multijugador y IA automática. Incluye interfaz gráfica con animaciones, sistema de puntuación basado en tiempo y algoritmos de decisión para jugadores automáticos." data-en="Card game developed in C during BUT with multiplayer mode and automatic AI. Includes graphical interface with animations, time-based scoring system, and decision algorithms for the automatic mode.">
+                                Juego de cartas desarrollado en C durante el BUT con modo multijugador y IA automática. Incluye interfaz gráfica con animaciones, sistema de puntuación basado en tiempo y algoritmos de decisión para el modo automático.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C</span>
+                                <span class="tech-tag">Graphics</span>
+                                <span class="tech-tag">AI</span>
+                                <span class="tech-tag">Multiplayer Game</span>
+                                <span class="tech-tag">Leadership</span>
+                                <span class="tech-tag">Adaptability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Education Section -->
+
+    <section id="education" class="education-section">
+        <div class="container">
+            <h2 class="section-title" data-es="Educación" data-en="Education">Educación</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="education-item">
+                        <h4 data-es="BUT Informatique" data-en="BUT Computer Science">BUT Informatique</h4>
+                        <span class="education-school">IUT Nice-Côte d'Azur</span>
+                        <span class="education-date" data-es="2023 - Presente" data-en="2023 - Present">2023 - Presente</span>
+                        <p data-es="Especialización en desarrollo de aplicaciones y optimización de sistemas. Enfoque en programación orientada a objetos, arquitecturas software, desarrollo web, bases de datos y gestión de proyectos." data-en="Specialization in application development and system optimization. Focus on object-oriented programming, software architectures, web development, databases, and project management.">
+                            Especialización en desarrollo de aplicaciones y optimización de sistemas. Enfoque en programación orientada a objetos, arquitecturas software, desarrollo web, bases de datos y gestión de proyectos.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="education-item">
+                        <h4 data-es="Bachillerato General - Opción Matemáticas Expertas" data-en="General Baccalaureate - Advanced Mathematics Option">Bachillerato General - Opción Matemáticas Expertas</h4>
+                        <span class="education-school">Lycée Franco-Mexicain, CDMX</span>
+                        <span class="education-date" data-es="2019 - 2023" data-en="2019 - 2023">2019 - 2023</span>
+                        <p data-es="Especialidad en Matemáticas y Ciencias de la Ingeniería con opción Matemáticas Expertas. Formación bilingüe franco-mexicana con enfoque científico y tecnológico." data-en="Specialization in Mathematics and Engineering Sciences with Advanced Mathematics option. Bilingual French-Mexican education with scientific and technological focus.">
+                            Especialidad en Matemáticas y Ciencias de la Ingeniería con opción Matemáticas Expertas. Formación bilingüe franco-mexicana con enfoque científico y tecnológico.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2 class="section-title" data-es="Experiencia" data-en="Experience">Experiencia</h2>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 data-es="Experiencia Profesional" data-en="Professional Experience">Experiencia Profesional</h4>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h5 data-es="Desarrollador en Alternancia y Operador Técnico" data-en="Apprentice Developer & Technical Operator">Desarrollador en Alternancia</h5>
+                                <span class="timeline-company">DCM (Dental Concept Méditerranean)</span>
+                                <span class="timeline-date" data-es="Septiembre 2024 - Presente" data-en="September 2024 - Present">Septiembre 2024 - Presente</span>
+                                <p data-es="Desarrollo de aplicaciones para uso del laboratorio dental, mantenimiento de servidores, gestión de parque informático, procesamiento de datos de dentistas y gestión de impresoras 3D. Desarrollo completo del sistema Dental Server Support para automatización de limpieza de archivos." data-en="Development of applications for dental laboratory use, server maintenance, IT park management, dentist data processing, and 3D printer management. Complete development of Dental Server Support system for file cleaning automation.">
+                                    Desarrollo de aplicaciones para uso del laboratorio dental, mantenimiento de servidores, gestión de parc informático, procesamiento de datos de dentistas y gestión de impresoras 3D. Desarrollo completo del sistema Dental Server Support para automatización de limpieza de archivos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h4 data-es="Voluntariados" data-en="Volunteer Experience">Experiencia Voluntaria</h4>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h5 data-es="Coordinador de Voluntarios" data-en="Volunteer Coordinator">Coordinador de Voluntarios</h5>
+                                <span class="timeline-company">Fundación Cancer Kids First</span>
+                                <span class="timeline-date" data-es="2021 - 2023" data-en="2021 - 2023">2021 - 2023</span>
+                                <p data-es="Trabajo voluntario coordinando misiones de apoyo a niños con cáncer en Ciudad de México. Organización de eventos, gestión de voluntarios y coordinación de actividades de recaudación de fondos." data-en="Volunteer work coordinating support missions for children with cancer in Mexico City. Event organization, volunteer management, and fundraising activities coordination.">
+                                    Trabajo voluntario coordinando misiones de apoyo a niños con cáncer en Ciudad de México. Organización de eventos, gestión de voluntarios y coordinación de actividades de recaudación de fondos.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h5 data-es="Voluntario de Servicio" data-en="Service Volunteer">Voluntario de Servicio</h5>
+                                <span class="timeline-company">Restaurant Solidaire (FACE06)</span>
+                                <span class="timeline-date" data-es="2023 - 2024" data-en="2023 - 2024">2023 - Presente</span>
+                                <p data-es="Voluntariado en el Restaurant Solidaire en Nice, Francia. Apoyo en la preparación y servicio de comidas, animación de actividades y asistencia a personas en situación de vulnerabilidad." data-en="Volunteer work at Restaurant Solidaire in Nice, France. Support in meal preparation and service, activity animation, and assistance to people in vulnerable situations.">
+                                    Voluntariado en restaurant solidario en Nice, Francia. Apoyo en la preparación y servicio de comidas, animación de actividades y asistencia a personas en situación de vulnerabilidad.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-es="¡Hablémos!" data-en="Let's Talk!">Contacto</h2>
+            
+            <div class="contact-content">
+                <p data-es="Siempre estoy abierto a discutir nuevas oportunidades, proyectos interesantes o simplemente charlar sobre tecnología y desarrollo." data-en="I'm always open to discussing new opportunities, interesting projects, or just chatting about technology and development.">
+                    Siempre estoy abierto a discutir nuevas oportunidades, proyectos interesantes o simplemente charlar sobre tecnología y desarrollo.
+                </p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>kevin.corona090@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+33 6 50 09 22 33</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Nice, France</span>
+                    </div>
+                </div>
+                
+                <div class="contact-actions">
+                    <a href="./assets/documents/CV-Kevin-Corona.pdf" class="btn btn-outline-light download-cv-btn" download="CV-Kevin-Corona.pdf" data-es="Descargar CV" data-en="Download CV">
+                        <i class="fas fa-download me-2"></i>
+                        Descargar CV
+                    </a>                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p data-es="© 2024 Kevin Corona. Todos los derechos reservados." data-en="© 2024 Kevin Corona. All rights reserved.">&copy; 2024 Kevin Corona. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="footer-social">
+                        <a href="https://github.com/KevinCorona09" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/kevin-yeudiel-gómez-corona-3322932bb" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://instagram.com/kevin._yeu" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:kevin.corona090@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>                          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <dialog id="video-modal" class="video-modal">
+        <button class="video-modal-close" aria-label="Close">&times;</button>
+        <video id="modal-video" controls>
+            <source src="" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
+    </dialog>
+    
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
