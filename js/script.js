@@ -16,7 +16,7 @@ class PortfolioApp {
             this.setupEventListeners();
             this.initEnhancements();
             this.initParticles();
-            this.initVideoModal(); // NUEVO: Inicializa la ventana modal de video
+            this.initVideoModal(); 
             console.log('Portfolio app initialized successfully');
         } catch (error) {
             console.error('Error initializing portfolio app:', error);
@@ -351,10 +351,10 @@ class PortfolioApp {
     initProjects() {
         const projectCards = document.querySelectorAll('.project-card');
         projectCards.forEach((card, index) => {
-            // Animación hover
+            // Card Animation
             card.addEventListener('mouseenter', () => this.animateProjectCard(card, true));
             card.addEventListener('mouseleave', () => this.animateProjectCard(card, false));
-            // Descarga de PDF
+            // Download PDF
             const pdfOverlay = card.querySelector('.download-pdf-overlay');
             if (pdfOverlay) {
                 pdfOverlay.addEventListener('click', (e) => {
@@ -363,7 +363,6 @@ class PortfolioApp {
                     this.downloadPDF(pdfPath);
                 });
             }
-            // Solo animación inicial
             card.style.animationDelay = `${index * 0.1}s`;
         });
     }
@@ -380,7 +379,6 @@ class PortfolioApp {
                 e.stopPropagation();
                 const videoSrc = btn.getAttribute('data-video');
                 if (videoSrc) {
-                    // CORRECCIÓN: Usar video en lugar de modal para querySelector
                     video.querySelector('source').src = videoSrc;
                     video.load();
                     modal.showModal();
@@ -427,7 +425,7 @@ class PortfolioApp {
         }
     }
 
-    // --- Animación de tarjetas ---
+    // --- Card Animation ---
     animateProjectCard(card, isHover) {
         const image = card.querySelector('.project-image img');
         const content = card.querySelector('.project-content');
@@ -753,12 +751,11 @@ class PortfolioApp {
     }
 }
 
-// Inicializar la aplicación
+// Start
 document.addEventListener('DOMContentLoaded', () => {
     new PortfolioApp();
 });
 
-// Export para uso potencial en módulos
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = PortfolioApp;
 }
