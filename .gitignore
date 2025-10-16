@@ -1,4 +1,3 @@
-@'
 # dependencies
 node_modules/
 
@@ -13,19 +12,5 @@ out/
 .DS_Store
 npm-debug.log*
 yarn-error.log*
-'@ | Set-Content .gitignore
 
-@'
-* text=auto
-*.js   text eol=lf
-*.ts   text eol=lf
-*.jsx  text eol=lf
-*.tsx  text eol=lf
-*.css  text eol=lf
-*.scss text eol=lf
-*.html text eol=lf
-*.md   text eol=lf
-*.json text eol=lf
-# Windows batch files should keep CRLF
-*.bat  text eol=crlf
-'@ | Set-Content .gitattributes
+
