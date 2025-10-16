@@ -69,16 +69,18 @@ class PortfolioApp {
   }
 
   initializeComponents() {
-    this.initLanguageSystem();
-    this.initNavigation();
-    this.initAnimations();
-    this.initProjects();
-    this.initSkills();
-    this.initContact();
-    this.initDownloadButton();
-    this.initSocialLinks();
-    this.initMultimediaMedia();
-  }
+  this.initLanguageSystem();
+  this.initNavigation();
+  this.initAnimations();
+  this.initProjects();
+  this.initSkills();
+  this.initContact();
+  this.initDownloadButton();
+  this.initSocialLinks();
+  this.initMultimediaMedia();
+  this.initAboutIcons();               
+}
+
 
   setupEventListeners() {
     window.addEventListener('resize', this.throttle(() => {
@@ -333,6 +335,27 @@ class PortfolioApp {
         if (!document.hidden && !fallback.classList.contains('show')) tryPlay();
     }, { passive: true });
     }
+
+initAboutIcons() {
+  const grid = document.querySelector('.image-grid');
+  if (!grid) return;
+
+  grid.querySelectorAll('.grid-item').forEach((item, i) => {
+    item.style.setProperty('--reveal-delay', `${i * 90}ms`);
+  });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        grid.classList.add('activated');   
+        obs.unobserve(entry.target);       
+      }
+    });
+  }, { threshold: 0.35 });
+
+  obs.observe(grid);
+  this.observers.set('about-icons', obs);
+}
 
 
   setupParallax() {

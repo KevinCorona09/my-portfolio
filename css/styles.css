@@ -23,6 +23,9 @@
   --border-radius:12px;
   --transition:all .3s cubic-bezier(.25,.46,.45,.94);
   --container-max-width:1200px;
+
+  /* NUEVO: altura base del navbar para compensar hero/anclas */
+  --nav-height:72px;
 }
 
 /* =========================
@@ -74,6 +77,8 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2;margin-bottom:1rem;}
   left:0;top:0;
   box-sizing:border-box;
   overflow:visible;
+  /* asegura una altura coherente con --nav-height */
+  min-height:var(--nav-height);
 }
 .custom-navbar.scrolled{background:rgba(12,12,12,.98);box-shadow:var(--shadow-lg);}
 
@@ -201,7 +206,15 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2;margin-bottom:1rem;}
 /* =========================
    Hero
    ========================= */
-.hero-section{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;padding:6rem 0 2rem;}
+/* AJUSTE: compensar el alto del navbar y evitar que lo tape */
+.hero-section{
+  min-height:calc(100vh - var(--nav-height));
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  padding:calc(var(--nav-height) + 1rem) 0 2rem;
+}
 .hero-background{
   position:absolute;top:0;left:0;width:120%;height:120%;
   background:linear-gradient(135deg, rgba(0,168,255,.03) 0%, rgba(30,55,153,.03) 50%, rgba(251,197,49,.02) 100%);
@@ -252,7 +265,12 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2;margin-bottom:1rem;}
 /* =========================
    Sections
    ========================= */
-section{padding:5rem 0;position:relative;}
+section{
+  padding:5rem 0;
+  position:relative;
+  /* AJUSTE: anclas no quedan ocultas por navbar fijo */
+  scroll-margin-top:calc(var(--nav-height) + 10px);
+}
 .about-section{background:rgba(255,255,255,.02);}
 .skills-section{background:var(--darker-color);}
 .projects-section{background:rgba(255,255,255,.02);}
@@ -286,6 +304,43 @@ section{padding:5rem 0;position:relative;}
 .grid-item span{font-size:.9rem;color:var(--light-color);font-weight:500;transition:var(--transition);display:block;}
 .grid-item:hover i{transform:scale(1.2) rotate(5deg);color:var(--accent-color);}
 .grid-item:hover span{color:var(--accent-color);font-weight:600;}
+
+/* === About icons: reveal-once animation === */
+.image-grid .grid-item{
+  opacity: 0;
+  transform: translateY(14px) scale(.98);
+}
+
+.image-grid.activated .grid-item{
+  /* pop + slide */
+  animation: aboutCardIn .6s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.image-grid.activated .grid-item i{
+  /* pequeño burst del icono */
+  animation: aboutIconIn .55s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay: calc(var(--reveal-delay, 0ms) + 80ms);
+}
+
+@keyframes aboutCardIn{
+  0%   {opacity:0; transform: translateY(22px) scale(.9)}
+  60%  {opacity:1; transform: translateY(-4px) scale(1.04)}
+  100% {opacity:1; transform: translateY(0)    scale(1)}
+}
+
+@keyframes aboutIconIn{
+  0%   {transform: scale(.65) rotate(-10deg)}
+  50%  {transform: scale(1.18) rotate(6deg)}
+  100% {transform: scale(1) rotate(0)}
+}
+
+/* Respeto a reduce-motion */
+@media (prefers-reduced-motion: reduce){
+  .image-grid .grid-item{opacity:1; transform:none; animation:none !important;}
+  .image-grid .grid-item i{animation:none !important;}
+}
+
 
 /* Skills (barras simples) */
 .skills-section h4{margin-bottom:2rem;color:var(--accent-color);font-size:clamp(1.3rem,2.5vw,1.5rem);}
@@ -356,15 +411,24 @@ section{padding:5rem 0;position:relative;}
 .tech-tag:hover::before{left:100%;}
 .tech-tag:hover{background:var(--primary-color);color:#fff;cursor:pointer;}
 
-/* Download icon on cards */
+/* Download icon on cards — SIEMPRE visible */
 .download-pdf-overlay{
-  position:absolute;top:10px;right:10px;background:rgba(251,197,49,.9);color:#fff;padding:8px;border-radius:50%;
-  cursor:pointer;transition:all .3s ease;z-index:4;
+  position:absolute;
+  top:10px; right:10px;
+  background:rgba(251,197,49,.95);
+  color:#fff;
+  width:44px; height:44px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  z-index:5;                 /* por encima de cualquier overlay */
+  opacity:1;                 /* siempre visible */
+  transform:none;            /* sin animación inicial */
+  pointer-events:auto;
 }
-.project-image .project-overlay.download-pdf-overlay{inset:auto;}
-.project-card:hover .download-pdf-overlay{opacity:1;transform:scale(1);}
-.download-pdf-overlay::before{content:"\f019";font-family:"Font Awesome 6 Free";font-weight:900;font-size:18px;line-height:1;}
-.download-pdf-overlay:hover{background:var(--primary-color);box-shadow:0 0 0 6px var(--accent-color);}
+.project-image .project-overlay.download-pdf-overlay{inset:auto;background:transparent;}
+.download-pdf-overlay:hover{background:var(--primary-color);box-shadow:0 0 0 6px var(--accent-color);transform:scale(1.04);}
 
 /* =========================
    Experience (timeline)
@@ -511,10 +575,15 @@ video{transition:all .5s ease-in-out;}
 @media (max-width:992px){
   section{padding:3rem 0;}
   .container{max-width:100%;padding:0 2rem;}
-  .hero-section{ text-align:center; padding:4rem 0 2rem; }
-  .hero-content{ margin-bottom:2rem; }
+
+  /* CENTRADO FIABLE DEL HERO EN MÓVILES/TABLET */
+  .hero-section{ text-align:center; padding:calc(var(--nav-height) + .5rem) 0 2rem; }
+  .hero-content{ margin-bottom:2rem; margin-inline:auto; }
+  .hero-title, .hero-description{ text-align:center; }
+  .hero-description{ margin-left:auto; margin-right:auto; }
   .hero-buttons{ justify-content:center; }
   .social-links{ justify-content:center; }
+
   .about-stats{ justify-content:center; }
   .contact-info{ flex-direction:column; align-items:center; }
   .contact-actions{ flex-direction:column; align-items:center; }
@@ -526,7 +595,7 @@ video{transition:all .5s ease-in-out;}
 /* SM */
 @media (max-width:768px){
   .container{padding:0 1rem;}
-  .hero-section{padding:100px 0 50px;}
+  .hero-section{padding:calc(var(--nav-height) + .25rem) 0 50px; min-height:auto;}
   .hero-title .name{font-size:2.2rem;}
   .hero-title .title{font-size:1.5rem;}
   .hero-description{font-size:1rem;margin:0 auto 1.5rem;max-width:100%;}
@@ -549,7 +618,7 @@ video{transition:all .5s ease-in-out;}
 
 /* XS */
 @media (max-width:576px){
-  .hero-section{ padding:80px 0 40px; min-height:auto; }
+  .hero-section{ padding:calc(var(--nav-height) - 8px) 0 40px; min-height:auto; }
   .hero-title{ font-size:1.5rem; }
   .hero-title .name{ font-size:1.8rem; }
   .hero-title .title{ font-size:1.2rem; }
@@ -715,14 +784,44 @@ video{transition:all .5s ease-in-out;}
 @keyframes skill-shine{ 0%{left:-40%} 100%{left:120%} }
 
 /* ===== Botón de descarga (fix final) ===== */
+/* (Conservado para compatibilidad, pero ya configurado como siempre visible arriba) */
 .project-image .download-pdf-overlay{
   position:absolute; top:10px; right:10px; left:auto; bottom:auto;
   width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
   background:rgba(251,197,49,.95); color:#fff; box-shadow:0 0 0 4px rgba(0,0,0,.15);
-  z-index:4; opacity:0; transform:scale(.92);
+  z-index:5; opacity:1; transform:none; pointer-events:auto;
   transition:opacity .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 .project-image .project-overlay.download-pdf-overlay{ inset:auto; }
-.project-card:hover .download-pdf-overlay{ opacity:1; transform:scale(1); }
-.download-pdf-overlay::before{ content:"\f019"; font-family:"Font Awesome 6 Free"; font-weight:900; font-size:18px; line-height:1; }
-.download-pdf-overlay:hover{ background:var(--primary-color); box-shadow:0 0 0 6px var(--accent-color); }
+.download-pdf-overlay:hover{ background:var(--primary-color); box-shadow:0 0 0 6px var(--accent-color); transform:scale(1.04); }
+
+/* Botón de descarga visible con icono <i> */
+.download-pdf-overlay{
+  position:absolute;
+  top:10px; right:10px;
+  width:44px; height:44px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(251,197,49,.95);
+  color:#fff;
+  box-shadow:0 0 0 4px rgba(0,0,0,.15);
+  cursor:pointer;
+  z-index:5;              /* por encima de superposiciones */
+  opacity:1;              /* siempre visible */
+  transform:none;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.project-image .project-overlay.download-pdf-overlay{ inset:auto; background:transparent; }
+.download-pdf-overlay i{ font-size:18px; line-height:1; display:block; }
+.download-pdf-overlay:hover{ background:var(--primary-color); box-shadow:0 0 0 6px var(--accent-color); transform:scale(1.04); }
+
+/* En 2 columnas, el último card ocupa todo el ancho para evitar huecos */
+@media (min-width:768px) and (max-width:1199.98px){
+  .skills-grid{ grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .skills-grid > .skill-card:last-child{ grid-column: 1 / -1; }
+}
+
+/* En móvil, 1 columna y un gap un poco menor */
+@media (max-width:767.98px){
+  .skills-grid{ grid-template-columns: 1fr; gap: 1rem; }
+}
