@@ -145,7 +145,7 @@ class PortfolioApp {
         if (element.tagName === 'INPUT' && (element.type === 'submit' || element.type === 'button')) {
           element.value = text;
         } else {
-          element.textContent = text;
+          element.innerHTML = text;  
         }
       }
     });
@@ -449,29 +449,56 @@ initAboutIcons() {
 
   // --- Skills System ---
   initSkills() {
-    const skillBars = document.querySelectorAll('.skill-progress');
-    const skillObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const progressBar = entry.target;
-          const width = progressBar.getAttribute('data-width');
-          if (width) {
-            setTimeout(() => {
-              progressBar.style.width = width;
-              progressBar.classList.add('animated');
-              progressBar.style.setProperty('--target-width', width);
-            }, 300);
-          }
-          skillObserver.unobserve(progressBar);
-        }
-      });
-    }, { threshold: 0.3 });
+    const skillCards = document.querySelectorAll('.skill-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const card = entry.target;
+                
+                // 1. MOSTRAR TARJETA
+                requestAnimationFrame(() => {
+                    card.classList.add('visible');
+                });
 
-    skillBars.forEach(bar => {
-      skillObserver.observe(bar);
+                // 2. ANIMAR TODAS LAS BARRAS DE ESTA TARJETA
+                // CORRECCIÓN: Usamos querySelectorAll en lugar de querySelector
+                const progressBars = card.querySelectorAll('.skill-progress');
+                
+                progressBars.forEach((progressBar, index) => {
+                    const targetWidth = progressBar.getAttribute('data-width');
+                    progressBar.style.width = '0%'; // Reset forzado
+                    
+                    // Pequeño escalonado (stagger) para las barras internas también
+                    // Esperamos 400ms para empezar + 100ms extra por cada barra
+                    setTimeout(() => {
+                        if (targetWidth) progressBar.style.width = targetWidth;
+                        progressBar.classList.add('animated');
+                    }, 400 + (index * 100)); 
+                });
+
+                // 3. ACTIVAR HOVER RÁPIDO
+                // Esperamos a que termine la transición de entrada de la tarjeta (800ms)
+                setTimeout(() => {
+                    card.classList.add('loaded');
+                }, 850);
+
+                // Dejamos de observar
+                observer.unobserve(card);
+            }
+        });
+    }, { 
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px' 
     });
-    this.observers.set('skills', skillObserver);
-  }
+
+    skillCards.forEach((card, index) => {
+        // Escalonado entre tarjetas
+        card.style.transitionDelay = `${index * 120}ms`;
+        observer.observe(card);
+    });
+}
+
 
   // --- Projects System ---
   initProjects() {
