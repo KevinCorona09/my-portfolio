@@ -856,3 +856,59 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = PortfolioApp;
 }
+
+// Intro Alpha Finance: loader GIF -> logo
+(function () {
+  const section = document.querySelector('#alpha-finance');
+  const card = section ? section.querySelector('.alpha-card') : null;
+  const loader = document.getElementById('alpha-loader');
+  const logoContent = document.getElementById('alpha-logo-content');
+
+  if (!section || !card || !loader || !logoContent) return;
+
+  // 🔹 1) En pantallas pequeñas NO usamos el GIF
+  const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+  if (isSmallScreen) {
+    // Mostramos directamente el contenido final
+    card.classList.add('alpha-loaded');
+    loader.style.opacity = '0';
+    loader.style.pointerEvents = 'none';
+    return;
+  }
+
+  // 🔹 2) En pantallas grandes seguimos usando el loader con animación
+  const LOADER_DURATION = 3200; // duración aprox del GIF en ms
+  let hasRun = false;
+
+  const startSequence = () => {
+    if (hasRun) return;
+    hasRun = true;
+
+    setTimeout(() => {
+      card.classList.add('alpha-loaded');
+    }, LOADER_DURATION);
+  };
+
+  // Fallback: navegadores sin IntersectionObserver
+  if (!('IntersectionObserver' in window)) {
+    startSequence();
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startSequence();
+          obs.disconnect();
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: '0px 0px -40% 0px'
+    }
+  );
+
+  observer.observe(section);
+})();

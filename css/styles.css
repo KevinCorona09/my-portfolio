@@ -1482,3 +1482,357 @@ video{transition:all .5s ease-in-out;}
     margin: 0 auto 2rem auto;
     max-width: 850px;
 }
+
+/* ===== Alpha Finance – tarjeta grande + subtarjetas glass + loader animado ===== */
+
+.alpha-finance-section {
+  position: relative;
+  padding: 5rem 0;
+}
+
+/* Título de sección con tonos fuertes del light mode */
+.alpha-finance-section .section-title {
+  background: linear-gradient(135deg, #395c83 0%, #548C92 40%, #6ccfd1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.alpha-finance-section .section-title::after {
+  background: linear-gradient(135deg, #395c83 0%, #6ccfd1 50%, #e1e7e5 100%);
+}
+
+/* Tarjeta principal MÁS ANCHA y MÁS ALTA */
+.alpha-card {
+  position: relative;
+  max-width: 1320px;
+  min-height: 560px;
+  margin: 0 auto;
+  border-radius: 30px;
+  padding: 3.5rem 3.25rem 3.25rem;
+  overflow: hidden;
+  background: #e1e7e5; /* fondo sólido claro */
+  border: 1px solid rgba(57, 92, 131, 0.25);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+  text-align: left;
+
+  /* animación de “crecimiento” cuando termina el loader */
+  transform-origin: top center;
+  transform: scale(0.95);          /* arranca un poco más pequeña */
+  transition: transform 0.6s ease;
+}
+
+/* Fondo animado solo dentro de la tarjeta, paleta light */
+.alpha-card::before {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  border-radius: inherit;
+  background-color: #e1e7e5;
+  background-image:
+    radial-gradient(ellipse at 20% 80%, rgba(84, 140, 146, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(74, 92, 126, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse at 40% 40%, rgba(108, 207, 209, 0.75) 0%, transparent 65%);
+  animation: alpha-bg-morph-light 18s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+/* todo el contenido va por encima del fondo animado */
+.alpha-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero (loader + logo) */
+.alpha-hero {
+  position: static;
+  margin-bottom: 2.2rem;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Overlay blanco que cubre toda la tarjeta (mismo tamaño que la alpha-card) */
+.alpha-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2.5rem;
+  background: #ffffff;
+  z-index: 5;
+  opacity: 1;
+  /* sin scale aquí para que ocupe el 100% */
+  transition: opacity 0.6s ease;
+}
+
+/* GIF centrado, manteniendo proporción horizontal, sin borde ni sombra */
+.alpha-loader-gif {
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Contenido final (logo + descripción), oculto al inicio */
+.alpha-logo-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s 0.1s ease, transform 0.6s 0.1s ease;
+}
+
+/* Logo grande */
+.alpha-logo-img {
+  max-width: 230px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.alpha-logo-desc {
+  max-width: 580px;
+  font-size: 0.95rem;
+  color: #334a63;
+}
+
+/* Estado tras completar el loader */
+.alpha-card.alpha-loaded {
+  transform: scale(1); /* la tarjeta crece a tamaño normal */
+}
+
+.alpha-card.alpha-loaded .alpha-loader {
+  opacity: 0;          /* solo se desvanece, sin cambiar de tamaño */
+  pointer-events: none;
+}
+
+.alpha-card.alpha-loaded .alpha-logo-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Título principal dentro de la tarjeta */
+.alpha-main-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #395c83 0%, #1e6263 45%, #6ccfd1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Subtarjetas estilo glass ===== */
+
+.alpha-info-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 1.7rem 1.9rem;
+  background: rgba(241, 248, 252, 0.78); /* glass claro */
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.30);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  color: #123047;
+}
+
+.alpha-info-main {
+  margin-bottom: 2.1rem;
+}
+
+/* Títulos de subtarjetas */
+.alpha-info-card h5,
+.alpha-subtitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+  color: #123047;
+}
+
+/* Párrafos dentro de subtarjetas y descripción principal */
+.alpha-info-card p,
+.alpha-info-main .alpha-desc {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: #123047;
+  margin-bottom: 0.85rem;
+}
+
+/* Lista con bullets personalizados */
+.alpha-bullets {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 0.9rem 0;
+}
+
+.alpha-bullets li {
+  position: relative;
+  padding-left: 1.7rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.alpha-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #6ccfd1 35%, #395c83 100%);
+  box-shadow: 0 0 0 3px rgba(108, 207, 209, 0.35);
+}
+
+/* Ajustes de layout */
+.alpha-subcards {
+  margin-top: 0.5rem;
+}
+
+/* Botones muy visibles */
+.alpha-actions {
+  margin-top: 0.8rem;
+}
+
+.alpha-actions .btn {
+  border-radius: 999px;
+  padding: 0.75rem 2.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+/* Botón ghost claro */
+.alpha-btn-ghost {
+  background: rgba(241, 248, 252, 0.95);
+  border: 1px solid #395c83;
+  color: #223048;
+}
+
+.alpha-btn-ghost:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+/* Botón principal con gradiente login */
+.alpha-btn-primary {
+  background: linear-gradient(135deg, #6ccfd1 0%, #395c83 100%);
+  border: 0;
+  color: #ffffff;
+  box-shadow: 0 16px 38px rgba(23, 72, 117, 0.55);
+}
+
+.alpha-btn-primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+/* Animación del fondo */
+@keyframes alpha-bg-morph-light {
+  0%, 100% {
+    background-position: 18% 82%, 82% 22%, 42% 42%;
+    background-size: 58% 58%, 58% 58%, 60% 60%;
+  }
+  50% {
+    background-position: 80% 24%, 22% 78%, 60% 60%;
+    background-size: 68% 68%, 68% 68%, 72% 72%;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+  .alpha-card {
+    padding: 2.6rem 1.7rem 2.4rem;
+  }
+
+  .alpha-main-title {
+    font-size: 1.8rem;
+  }
+
+  .alpha-logo-img {
+    max-width: 190px;
+  }
+}
+
+@media (max-width: 768px) {
+  .alpha-loader {
+    padding: 1.5rem;
+  }
+
+  .alpha-loader-gif {
+    max-width: 100%;
+  }
+}
+
+/* ==== Alpha Finance: sin GIF en pantallas pequeñas ==== */
+@media (max-width: 768px) {
+  #alpha-finance .alpha-card {
+    min-height: auto;
+    padding: 2.4rem 1.4rem 2.2rem;
+    transform: none; /* sin efecto de escala inicial */
+  }
+
+  /* Ocultamos completamente el overlay del loader y su GIF */
+  #alpha-finance .alpha-loader,
+  #alpha-finance .alpha-loader-gif {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Mostramos el contenido final (logo + texto) desde el principio */
+  #alpha-finance .alpha-logo-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Alpha Finance: mismo alto para "¿Qué es Alpha Finance?" y "Nuestra misión" === */
+@media (min-width: 992px) {
+  /* Las columnas de la fila se comportan como contenedores flex */
+  .alpha-subcards > [class^="col-"],
+  .alpha-subcards > [class*=" col-"] {
+    display: flex;
+  }
+
+  /* La tarjeta ocupa toda la altura disponible dentro de la columna */
+  .alpha-subcards .alpha-info-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+/* === Alpha Finance: mejorar composición vertical de "Nuestra misión" === */
+@media (min-width: 992px) {
+  /* Segunda columna de las subcards (Nuestra misión) */
+  .alpha-subcards > .col-lg-6:last-child .alpha-info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* reparte título, texto y bullets en toda la altura */
+  }
+
+  .alpha-subcards > .col-lg-6:last-child .alpha-info-card h5 {
+    margin-bottom: 0.8rem;
+  }
+
+  .alpha-subcards > .col-lg-6:last-child .alpha-info-card p {
+    margin-bottom: 1.1rem;
+  }
+
+  .alpha-subcards > .col-lg-6:last-child .alpha-info-card .alpha-bullets {
+    margin-bottom: 0;
+  }
+}
+
