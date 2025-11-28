@@ -1,5 +1,3 @@
-// Optimized Portfolio Application (FR/ES/EN ready)
-
 class PortfolioApp {
   constructor() {
     // Default language: French
@@ -8,7 +6,6 @@ class PortfolioApp {
     this.observers = new Map();
     this.particlesContainer = null;
 
-    // Simple i18n dictionary for toasts / small messages
     this.i18n = {
       fr: {
         downloading_presentation: 'Téléchargement de la présentation...',
@@ -857,7 +854,6 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = PortfolioApp;
 }
 
-// Intro Alpha Finance: loader GIF -> logo
 (function () {
   const section = document.querySelector('#alpha-finance');
   const card = section ? section.querySelector('.alpha-card') : null;
@@ -866,18 +862,15 @@ if (typeof module !== 'undefined' && module.exports) {
 
   if (!section || !card || !loader || !logoContent) return;
 
-  // 🔹 1) En pantallas pequeñas NO usamos el GIF
   const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
   if (isSmallScreen) {
-    // Mostramos directamente el contenido final
     card.classList.add('alpha-loaded');
     loader.style.opacity = '0';
     loader.style.pointerEvents = 'none';
     return;
   }
 
-  // 🔹 2) En pantallas grandes seguimos usando el loader con animación
-  const LOADER_DURATION = 3200; // duración aprox del GIF en ms
+  const LOADER_DURATION = 3200; 
   let hasRun = false;
 
   const startSequence = () => {
@@ -889,7 +882,7 @@ if (typeof module !== 'undefined' && module.exports) {
     }, LOADER_DURATION);
   };
 
-  // Fallback: navegadores sin IntersectionObserver
+  // Fallback
   if (!('IntersectionObserver' in window)) {
     startSequence();
     return;
