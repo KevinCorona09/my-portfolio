@@ -66,18 +66,17 @@ class PortfolioApp {
   }
 
   initializeComponents() {
-  this.initLanguageSystem();
-  this.initNavigation();
-  this.initAnimations();
-  this.initProjects();
-  this.initSkills();
-  this.initContact();
-  this.initDownloadButton();
-  this.initSocialLinks();
-  this.initMultimediaMedia();
-  this.initAboutIcons();               
-}
-
+    this.initLanguageSystem();
+    this.initNavigation();
+    this.initAnimations();
+    this.initProjects();
+    this.initSkills();
+    this.initContact();
+    this.initDownloadButton();
+    this.initSocialLinks();
+    this.initMultimediaMedia();
+    this.initAboutIcons();              
+  }
 
   setupEventListeners() {
     window.addEventListener('resize', this.throttle(() => {
@@ -184,11 +183,19 @@ class PortfolioApp {
     const element = document.querySelector(target);
     if (element) {
       const offsetTop = element.offsetTop - 80;
-      this.animatedScrollTo(offsetTop, 1000);
+      
+      // CAMBIO AQUÍ: Reducimos de 1000 a 400 ms para que sea rápido y fluido
+      this.animatedScrollTo(offsetTop, 100); 
+      
+      // Cerrar el menú móvil inmediatamente de forma limpia
       const navbarCollapse = document.querySelector('.navbar-collapse');
       if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-        if (bsCollapse) bsCollapse.hide();
+        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
+        bsCollapse.hide();
+        
+        // Quitar la clase active del botón hamburguesa si la tiene
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        if (navbarToggler) navbarToggler.classList.remove('active');
       }
     }
   }
@@ -459,7 +466,6 @@ initAboutIcons() {
                 });
 
                 // 2. ANIMAR TODAS LAS BARRAS DE ESTA TARJETA
-                // CORRECCIÓN: Usamos querySelectorAll en lugar de querySelector
                 const progressBars = card.querySelectorAll('.skill-progress');
                 
                 progressBars.forEach((progressBar, index) => {
@@ -905,3 +911,34 @@ if (typeof module !== 'undefined' && module.exports) {
 
   observer.observe(section);
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Lógica de Filtrado de Proyectos
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-wrapper');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remover clase 'active' de todos los botones
+      filterBtns.forEach(b => b.classList.remove('active'));
+      // Añadir al botón clickeado
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      projectCards.forEach(card => {
+        // Remover clase de animación previa
+        card.classList.remove('show');
+        
+        if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
+          card.classList.remove('hide');
+          // Forzar un reflow para que la animación reinicie
+          void card.offsetWidth;
+          card.classList.add('show');
+        } else {
+          card.classList.add('hide');
+        }
+      });
+    });
+  });
+});

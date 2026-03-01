@@ -1779,3 +1779,100 @@ section li {
 .contact-content p {
   text-align: center;
 }
+
+/* --- MEJORAS SECCIÓN PROYECTOS --- */
+
+/* Caja de instrucciones destacada */
+.projects-guide {
+  background: rgba(0, 168, 255, 0.08);
+  border: 1px solid rgba(0, 168, 255, 0.2);
+  border-radius: 50px;
+  padding: 0.8rem 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #e2e8f0; /* Color mucho más brillante para alto contraste */
+  font-size: 0.95rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.projects-guide:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 168, 255, 0.5);
+}
+
+.projects-guide i {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+/* Sistema de Filtrado (Botones) */
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--light-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(5px);
+}
+
+.filter-btn:hover {
+  background: rgba(0, 168, 255, 0.1);
+  border-color: rgba(0, 168, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Rediseño de la tarjeta de proyecto (Glassmorphism & Glow) */
+.project-card {
+  border-radius: 20px; /* Bordes más modernos */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(0, 168, 255, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 168, 255, 0.15), 0 0 0 1px rgba(0, 168, 255, 0.2) inset;
+}
+
+/* Animación fluida para el filtrado */
+.project-wrapper {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.project-wrapper.hide {
+  display: none;
+}
+@keyframes fadeInUpFilter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.project-wrapper.show {
+  animation: fadeInUpFilter 0.5s forwards;
+}
