@@ -1878,3 +1878,9 @@ section li {
     justify-content: center !important;
   }
 }
+
+/* FIX: Fondo transparente para la sección de Experiencia */
+.experience-section {
+  background: rgba(0, 0, 0, 0.3) !important; /* Fondo oscuro pero transparente */
+  backdrop-filter: blur(2px); /* Opcional: le da un toque elegante al fondo */
+}
