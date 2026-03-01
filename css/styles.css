@@ -375,6 +375,7 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2;margin-bottom:1rem;}
   box-shadow:var(--shadow-xl);
   position:relative;
   z-index:2;
+  border:5px solid rgba(255,255,255,.1);
 }
 .image-border{
   position:absolute;
@@ -729,13 +730,6 @@ section{
   border:3px solid var(--dark-color);
   box-shadow:0 0 10px rgba(0,168,255,.5);
 }
-.timeline-content{
-  background:rgba(255,255,255,.05);
-  padding:1.5rem;
-  border-radius:var(--border-radius);
-  border-left:3px solid var(--primary-color);
-  transition:all .3s ease;
-}
 .timeline-item:hover .timeline-content{transform:translateX(5px);box-shadow:var(--shadow-lg);}
 .timeline-item:hover .timeline-marker{background:var(--accent-color);box-shadow:0 0 15px rgba(251,197,49,.6);}
 .timeline-content h5{color:var(--accent-color);margin-bottom:.5rem;font-size:1.1rem;}
@@ -998,29 +992,6 @@ video{transition:all .5s ease-in-out;}
   .footer-social{justify-content:center;margin-top:1rem;}
   .timeline{padding-left:1.5rem;}
   .timeline-marker{left:-1.5rem;}
-}
-
-@media (max-width:768px){
-  .container{padding:0 1rem;}
-  .hero-section{padding:calc(var(--nav-height) + .25rem) 0 50px;min-height:auto;}
-  .hero-title .name{font-size:2.2rem;}
-  .hero-title .title{font-size:1.5rem;}
-  .hero-description{font-size:1rem;margin:0 auto 1.5rem;max-width:100%;}
-  .hero-buttons .btn{width:100%;max-width:300px;justify-content:center;}
-  .image-container{max-width:300px;margin:0 auto;}
-  .scroll-indicator{bottom:20px;}
-  .about-stats{gap:1rem;justify-content:space-around;}
-  .stat-item{flex:1;min-width:80px;}
-  .image-grid{grid-template-columns:1fr;max-width:200px;}
-  .navbar-nav{text-align:center;padding:1rem 0;}
-  .navbar-nav .nav-link{padding:.5rem 0!important;margin:0;}
-  .project-tech{justify-content:center;}
-  .contact-item{font-size:.9rem;flex-direction:column;text-align:center;padding:1rem;}
-  .project-details{padding:.8rem;}
-  .project-details li{font-size:.8rem;}
-  .project-video{height:180px;}
-  .contact-item span{font-size:.9rem;word-break:break-word;}
-  .bg-pattern{background-size:150px 150px;opacity:.02;}
 }
 
 @media (max-width:576px){
@@ -1656,7 +1627,6 @@ video{transition:all .5s ease-in-out;}
   transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
-/* Botón ghost claro */
 .alpha-btn-ghost {
   background: rgba(241, 248, 252, 0.95);
   border: 1px solid #395c83;
@@ -1680,7 +1650,6 @@ video{transition:all .5s ease-in-out;}
   transform: translateY(-1px);
 }
 
-/* Animación del fondo */
 @keyframes alpha-bg-morph-light {
   0%, 100% {
     background-position: 18% 82%, 82% 22%, 42% 42%;
@@ -1692,16 +1661,13 @@ video{transition:all .5s ease-in-out;}
   }
 }
 
-/* Responsivo */
 @media (max-width: 992px) {
   .alpha-card {
     padding: 2.6rem 1.7rem 2.4rem;
   }
-
   .alpha-main-title {
     font-size: 1.8rem;
   }
-
   .alpha-logo-img {
     max-width: 190px;
   }
@@ -1711,26 +1677,20 @@ video{transition:all .5s ease-in-out;}
   .alpha-loader {
     padding: 1.5rem;
   }
-
   .alpha-loader-gif {
     max-width: 100%;
   }
-}
-
-@media (max-width: 768px) {
   #alpha-finance .alpha-card {
     min-height: auto;
     padding: 2.4rem 1.4rem 2.2rem;
     transform: none; 
   }
-
   #alpha-finance .alpha-loader,
   #alpha-finance .alpha-loader-gif {
     display: none !important;
     opacity: 0 !important;
     pointer-events: none !important;
   }
-
   #alpha-finance .alpha-logo-content {
     opacity: 1;
     transform: translateY(0);
@@ -1742,29 +1702,22 @@ video{transition:all .5s ease-in-out;}
   .alpha-subcards > [class*=" col-"] {
     display: flex;
   }
-
   .alpha-subcards .alpha-info-card {
     display: flex;
     flex-direction: column;
     height: 100%;
   }
-}
-
-@media (min-width: 992px) {
   .alpha-subcards > .col-lg-6:last-child .alpha-info-card {
     display: flex;
     flex-direction: column;
     justify-content: center; 
   }
-
   .alpha-subcards > .col-lg-6:last-child .alpha-info-card h5 {
     margin-bottom: 0.8rem;
   }
-
   .alpha-subcards > .col-lg-6:last-child .alpha-info-card p {
     margin-bottom: 1.1rem;
   }
-
   .alpha-subcards > .col-lg-6:last-child .alpha-info-card .alpha-bullets {
     margin-bottom: 0;
   }
@@ -1780,9 +1733,6 @@ section li {
   text-align: center;
 }
 
-/* --- MEJORAS SECCIÓN PROYECTOS --- */
-
-/* Caja de instrucciones destacada */
 .projects-guide {
   background: rgba(0, 168, 255, 0.08);
   border: 1px solid rgba(0, 168, 255, 0.2);
@@ -1792,7 +1742,7 @@ section li {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: #e2e8f0; /* Color mucho más brillante para alto contraste */
+  color: #e2e8f0; 
   font-size: 0.95rem;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1811,7 +1761,6 @@ section li {
   font-size: 1.2rem;
 }
 
-/* Sistema de Filtrado (Botones) */
 .project-filters {
   display: flex;
   flex-wrap: wrap;
@@ -1846,9 +1795,8 @@ section li {
   transform: translateY(-2px);
 }
 
-/* Rediseño de la tarjeta de proyecto (Glassmorphism & Glow) */
 .project-card {
-  border-radius: 20px; /* Bordes más modernos */
+  border-radius: 20px; 
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -1862,7 +1810,6 @@ section li {
   box-shadow: 0 20px 40px rgba(0, 168, 255, 0.15), 0 0 0 1px rgba(0, 168, 255, 0.2) inset;
 }
 
-/* Animación fluida para el filtrado */
 .project-wrapper {
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
@@ -1875,4 +1822,59 @@ section li {
 }
 .project-wrapper.show {
   animation: fadeInUpFilter 0.5s forwards;
+}
+
+/* ==========================================================================
+   ARREGLO GLOBAL DE CENTRADO PARA MÓVILES (Max 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Forzar centrado de texto y quitar el justificado en pantallas pequeñas */
+  section p,
+  section li,
+  .about-content h3,
+  .about-content p,
+  .education-item,
+  .education-item h4,
+  .education-school,
+  .education-date,
+  .education-item p,
+  .timeline-content,
+  .timeline-content h5,
+  .timeline-company,
+  .timeline-date,
+  .timeline-content p,
+  .experience-section h4,
+  .project-content,
+  .project-content h4,
+  .project-content p,
+  .mm-card,
+  .mm-card h4,
+  .mm-desc,
+  .alpha-info-card,
+  .alpha-info-card h5,
+  .alpha-subtitle,
+  .alpha-info-main .alpha-desc {
+    text-align: center !important;
+    text-justify: auto !important;
+  }
+
+  /* Mantener alineación de los puntos (bullets), pero centrando el bloque completo */
+  .alpha-bullets, 
+  .project-details {
+    display: inline-block;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .mm-card ul {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Contenedores Flex */
+  .project-tech, 
+  .mm-tags {
+    justify-content: center !important;
+  }
 }
